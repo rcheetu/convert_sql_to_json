@@ -13,7 +13,7 @@ import glob
 from timeit import default_timer as timer
 
 config  = configparser.RawConfigParser() 
-config.read('config.ini')
+config.read('../config.ini')
 
 logger = logging.getLogger('')
 logger.setLevel(logging.DEBUG)
