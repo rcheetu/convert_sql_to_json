@@ -1,0 +1,18 @@
+[Fri, 04 Sep 2020 13:16:51] INFO [generator.py.connection:64] DB2 Connected!
+
+[Fri, 04 Sep 2020 13:16:51] INFO [generator.py.write_json:131] Start converting test_sql.sql into JSON...
+[Fri, 04 Sep 2020 13:16:54] INFO [generator.py.query_db:124] Conncetion <ibm_db_dbi.Connection object at 0x00000200B8D16550> is  closed.
+[Fri, 04 Sep 2020 13:16:54] INFO [generator.py.write_json:135] The sql test_sql.sql successfully converted to JSON !
+
+[Fri, 04 Sep 2020 13:16:58] INFO [generator.py.inner_decorator:111] SQLs from <__main__.DB2DataBase object at 0x00000200B8D164A8> database are successfully converted to JSON for 0.301379969999999  !
+
+
+[Fri, 04 Sep 2020 13:18:32] INFO [generator.py.connection:81] MSSQL Connected!
+
+[Fri, 04 Sep 2020 13:18:32] INFO [generator.py.write_json:131] Start converting test_sql2.sql into JSON...
+[Fri, 04 Sep 2020 13:18:37] INFO [generator.py.query_db:124] Conncetion <pymssql.Connection object at 0x00000200B8D12A48> is  closed.
+[Fri, 04 Sep 2020 13:18:38] INFO [generator.py.write_json:135] The sql test_sql2.sql successfully converted to JSON !
+
+[Fri, 04 Sep 2020 13:18:38] INFO [generator.py.inner_decorator:111] SQLs from <__main__.MsSqlDataBase object at 0x00000200B8D164A8> database are successfully converted to JSON for 6.012366700000001  !
+
+

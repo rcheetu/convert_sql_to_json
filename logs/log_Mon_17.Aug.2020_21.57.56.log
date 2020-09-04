@@ -1,0 +1,8 @@
+[Mon, 17 Aug 2020 21:57:56] INFO [ConvertQueryToJSON.py.first_example:49] FIRST EXAMPLE conversion started...
+[Mon, 17 Aug 2020 21:57:56] INFO [ConvertQueryToJSON.py.lbdb2w_connection:32] IBM DB2 Connected!
+[Mon, 17 Aug 2020 21:57:56] INFO [ConvertQueryToJSON.py.first_example:64] IBM DB2 Connection Close.
+[Mon, 17 Aug 2020 21:57:56] INFO [ConvertQueryToJSON.py.first_example:66] FIRST EXAMPLE conversion completed!
+[Mon, 17 Aug 2020 21:57:56] INFO [ConvertQueryToJSON.py.second_example:49] SECOND EXAMPLE conversion started...
+[Mon, 17 Aug 2020 21:57:56] INFO [ConvertQueryToJSON.py.mssql_connection:42] MSSQL Connected!
+[Mon, 17 Aug 2020 21:57:56] INFO [ConvertQueryToJSON.py.second_example:83] MSSQL Connection Close.
+[Mon, 17 Aug 2020 21:57:56] INFO [ConvertQueryToJSON.py.second_example:84] SECOND EXAMPLE conversion completed!
