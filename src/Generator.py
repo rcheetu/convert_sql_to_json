@@ -25,6 +25,15 @@ sh.setFormatter(formatter)
 logger.addHandler(fh)
 logger.addHandler(sh)
 
+def singleton(class_):
+    instances = {}
+
+    def get_instance(*args, **kwargs):
+        if class_ not in instances:
+            instances[class_] = class_(*args, **kwargs)
+        return instances[class_]
+
+    return get_instance
 
 class Config(object):
     def load_db2_param():
@@ -56,7 +65,7 @@ class Database(ABC):
    def get_query(self):
         pass
 
-
+@singleton
 class DB2DataBase(Database):
     def connection(self):
         try:
@@ -70,7 +79,7 @@ class DB2DataBase(Database):
     def get_query():
         return [f for f in glob.glob("../sqls/db2/*.sql")]
 
-
+@singleton
 class MsSqlDataBase(Database):
     def connection(self):
         try:
