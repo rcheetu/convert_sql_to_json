@@ -1,0 +1,7 @@
+configparser==5.0.0
+glob2==0.7
+ibm-db==3.0.2
+ibmdb2==0.3
+pymssql @ git+https://github.com/pymssql/pymssql@4ed03661ab12311e8f78ca2bf6dbd3b935413a8e
+pypyodbc==1.3.4
+remark-compose @ https://github.com/igordejanovic/remark-compose/archive/master.zip
