@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 import ibm_db_dbi as db
 import pymssql
+import pypyodbc
 import configparser
 import json
 import codecs
@@ -50,9 +51,17 @@ class Config(object):
                                     config.get('mssql', 'PASSWORD'),
                                     config.get('mssql', 'DATABASE'))                                                                             
 
+    def load_pypyodbc_param():
+        return "DRIVER={};SERVER={};UID={};PWD={};DATABASE={};".format(config.get('pypyodbc', 'DRIVER'),
+                                                                       config.get('pypyodbc', 'SERVER'),
+                                                                       config.get('pypyodbc', 'UID'),
+                                                                       config.get('pypyodbc', 'PWD'), 
+                                                                       config.get('pypyodbc', 'DATABASE'))                                                                             
+
     CHOSE_DATABASE = {
-          'db2': load_db2_param,
-          'mssql': load_mssql_param,
+          'lbdb2w'   : load_lbdb2w_param,
+          'mssql'    : load_mssql_param,
+          'pypyodbc' : load_pypyodbc_param
           }
 
 
@@ -97,6 +106,20 @@ class MsSqlDataBase(Database):
     def get_query():
         return [f for f in glob.glob("../sqls/mssql/*.sql")]
 
+
+@singleton
+class PyMsSqlDataBase(Database):
+    def connection(self):
+        try:
+            conn = pypyodbc.connect(Config.CHOSE_DATABASE['pypyodbc']())
+            logging.info("PYPYODBC Connected!\n")
+            return conn
+        except Exception:
+            logging.error("\nERROR: Unable to connect to the pypysql server.")
+
+    @staticmethod
+    def get_query():
+        return [f for f in glob.glob("../sqls/mssql/*.sql")]
 
 class DbFactory:
     def get_database_connection(self, database):
@@ -153,3 +176,4 @@ class Convertor:
 if __name__ == "__main__":
     Convertor.start_converting(DB2DataBase())
     Convertor.start_converting(MsSqlDataBase())
+    Convertor.start_converting(PyMsSqlDataBase())
