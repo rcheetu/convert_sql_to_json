@@ -135,7 +135,7 @@ class Convertor:
 
     @staticmethod
     def write_json(sql_path, conn):
-        with open(f"{sql_path}", 'r') as f:
+        with codecs.open(f"{sql_path}", 'r', "utf-8-sig") as f:
             sql = f.read().replace('\n', ' ')
         logger.info(f"Start converting {os.path.basename(sql_path)} into JSON...")
         file_name = os.path.splitext(os.path.basename(f"{sql_path}"))[0]
