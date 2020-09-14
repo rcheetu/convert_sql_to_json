@@ -140,7 +140,7 @@ class Convertor:
             start = timer()
             function(database)
             end = timer()
-            logger.info(f"SQLs from {database} database are successfully converted to JSON for {end - start}  !\n\n")
+            logger.info(f"SQLs from {database.__class__.__name__} database are successfully converted to JSON for {end - start}  !\n\n")
         return inner_decorator
     
     @staticmethod
