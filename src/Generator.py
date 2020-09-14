@@ -153,7 +153,7 @@ class Convertor:
         cur.execute(sql)
         r = [dict((cur.description[i][0], value) for i, value in enumerate(row)) for row in cur.fetchall()]
         cur.connection.close()
-        logger.info(f"Conncetion {conn} is  closed.")
+        logger.info(f"Conncetion {conn.__class__.__name__} is  closed.")
         return r
 
     @staticmethod
