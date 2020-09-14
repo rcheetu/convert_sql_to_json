@@ -9,6 +9,7 @@ import logging
 from json import JSONEncoder
 import datetime
 import os
+import shutil
 import sys
 import glob
 from timeit import default_timer as timer
@@ -88,6 +89,7 @@ class DB2DataBase(Database):
     def get_query():
         return [f for f in glob.glob("../sqls/db2/*.sql")]
 
+
 @singleton
 class MsSqlDataBase(Database):
     def connection(self):
@@ -121,6 +123,7 @@ class PyMsSqlDataBase(Database):
     def get_query():
         return [f for f in glob.glob("../sqls/mssql/*.sql")]
 
+
 class DbFactory:
     def get_database_connection(self, database):
         return database.connection()
@@ -146,6 +149,15 @@ class Convertor:
     @staticmethod
     def get_current_date_time():
         return datetime.datetime.now().strftime('%a_%d.%b.%Y_%H.%M.%S')
+ 
+    @staticmethod
+    def move_to_arh():
+        output_folder = "../output_json_generator/"
+        arhiv_folder = "../output_json_generator/arh/"
+        if not os.path.isfile(output_folder):
+            files = os.listdir(output_folder)
+            for f in files:
+                shutil.move(output_folder+f, arhiv_folder)
     
     @staticmethod
     def query_db(sql, conn):
@@ -174,6 +186,7 @@ class Convertor:
 
 
 if __name__ == "__main__":
+    Convertor.move_to_arh()
     Convertor.start_converting(DB2DataBase())
     Convertor.start_converting(MsSqlDataBase())
     Convertor.start_converting(PyMsSqlDataBase())
